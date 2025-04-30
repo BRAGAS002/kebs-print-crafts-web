@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gallery - KEBS Print Crafts</title>
+    <title>Gallery - KEBS Enterprise</title>
     <meta name="description" content="View our portfolio of print projects including tarpaulins, t-shirts, mugs, and more." />
     <meta name="author" content="KEBS Enterprise" />
     <link rel="stylesheet" href="src/styles/main.css" />
@@ -16,7 +16,7 @@
       <div class="container">
         <div class="header-content">
           <div class="logo">
-            <h1>KEBS <span>Print Crafts</span></h1>
+            <h1>KEBS <span>Enterprise</span></h1>
           </div>
           <nav class="main-nav">
             <button class="mobile-menu-toggle" id="menuToggle">
@@ -121,6 +121,33 @@
               </div>
             </div>
           </div>
+          <div class="gallery-item mugs">
+            <div class="gallery-image">
+              <img src="src/images/gallery-7.jpg" alt="Custom printed mugs for corporate event">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h4>Corporate Gifts</h4>
+                  <p>Custom Mug Printing</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item others">
+            <div class="gallery-image">
+              <img src="src/images/gallery-8.jpg" alt="Custom printed eco bags">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h4>Promotional Eco Bags</h4>
+                  <p>Eco Bag Printing</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-cta">
+          <h3>Ready to start your own project?</h3>
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
         </div>
       </div>
     </section>
@@ -129,7 +156,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-logo">
-            <h3>KEBS <span>Print Crafts</span></h3>
+            <h3>KEBS <span>Enterprise</span></h3>
             <p>Quality printing solutions for all your needs</p>
           </div>
           <div class="footer-links">
@@ -171,34 +198,5 @@
     </a>
 
     <script src="src/scripts/main.js"></script>
-    <script>
-      // Gallery filter functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        
-        filterBtns.forEach(btn => {
-          btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Get filter value
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Show/hide gallery items based on filter
-            galleryItems.forEach(item => {
-              if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                item.style.display = 'block';
-              } else {
-                item.style.display = 'none';
-              }
-            });
-          });
-        });
-      });
-    </script>
   </body>
 </html>
