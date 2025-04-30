@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us - KEBS Print Crafts</title>
-    <meta name="description" content="Contact KEBS Enterprise for all your professional printing needs and inquiries." />
+    <meta name="description" content="Get in touch with KEBS Enterprise for all your printing needs." />
     <meta name="author" content="KEBS Enterprise" />
     <link rel="stylesheet" href="src/styles/main.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap">
@@ -37,91 +37,85 @@
       </div>
     </header>
 
-    <section class="contact section" id="contact">
+    <section class="contact-hero">
       <div class="container">
-        <div class="section-header">
-          <h2>Contact Us</h2>
-          <p>Get in touch for inquiries and quotes</p>
-        </div>
-        <div class="contact-content">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you. Get in touch with us for any inquiries.</p>
+      </div>
+    </section>
+
+    <section class="contact-content">
+      <div class="container">
+        <div class="contact-grid">
           <div class="contact-info">
-            <div class="contact-item">
-              <div class="contact-icon">
-                <img src="src/assets/icons/location.png" alt="Address">
-              </div>
-              <div class="contact-text">
-                <h4>Address</h4>
-                <p>123 Print Avenue, Makati City, Philippines</p>
-              </div>
+            <h3>Contact Information</h3>
+            <div class="info-item">
+              <h4>Address</h4>
+              <p>123 Print Avenue, Makati City, Philippines</p>
             </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <img src="src/assets/icons/email.png" alt="Email">
-              </div>
-              <div class="contact-text">
-                <h4>Email</h4>
-                <p>info@kebsenterprises.com</p>
-              </div>
+            <div class="info-item">
+              <h4>Phone</h4>
+              <p>+63 2 1234 5678</p>
+              <p>+63 9XX XXX XXXX</p>
             </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <img src="src/assets/icons/phone.png" alt="Phone">
-              </div>
-              <div class="contact-text">
-                <h4>Phone</h4>
-                <p>+63 2 1234 5678</p>
-              </div>
+            <div class="info-item">
+              <h4>Email</h4>
+              <p>info@kebsenterprises.com</p>
+              <p>sales@kebsenterprises.com</p>
             </div>
-            <div class="business-hours">
+            <div class="info-item">
               <h4>Business Hours</h4>
-              <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-              <p>Saturday: 9:00 AM - 3:00 PM</p>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+              <p>Saturday: 9:00 AM - 1:00 PM</p>
               <p>Sunday: Closed</p>
             </div>
           </div>
           <div class="contact-form-container">
+            <h3>Send Us a Message</h3>
             <form id="contactForm" class="contact-form">
               <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Your Name*</label>
                 <input type="text" id="name" name="name" required>
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Email Address*</label>
                 <input type="email" id="email" name="email" required>
               </div>
               <div class="form-group">
-                <label for="phone">Phone</label>
+                <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone">
               </div>
               <div class="form-group">
-                <label for="service">Service Needed</label>
+                <label for="service">Service Interested In</label>
                 <select id="service" name="service">
                   <option value="">Select a service</option>
-                  <option value="tarpaulin">Tarpaulin</option>
+                  <option value="tarpaulin">Tarpaulin Printing</option>
                   <option value="tshirt">T-shirt Printing</option>
                   <option value="sintra">Sintra Board</option>
-                  <option value="mugs">Mugs</option>
+                  <option value="mugs">Custom Mugs</option>
                   <option value="dryseal">Dry Seal</option>
                   <option value="buttonpin">Button Pin</option>
                   <option value="lanyard">Lanyard/Lace</option>
-                  <option value="ecobag">Ecobag/Totebag</option>
-                  <option value="plaque">Plaque</option>
-                  <option value="medal">Medal (KAGAWARAN)</option>
-                  <option value="personalized-medal">Personalized Medal</option>
-                  <option value="collar-pin">Collar Pin</option>
-                  <option value="rubber-stamp">Rubber Stamp</option>
-                  <option value="certificate-holder">Certificate Holder</option>
-                  <option value="foldable-fan">Foldable Fan</option>
-                  <option value="umbrella">Umbrella</option>
+                  <option value="ecobag">Ecobag/Totebag Printing</option>
+                  <option value="other">Other</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+                <label for="message">Your Message*</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <div class="container">
+        <h3>Find Us</h3>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.802548850809!2d121.02730931540228!3d14.556950589829351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90264a0ed01%3A0x2b066ed57830aedb!2sMakati%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1619514246532!5m2!1sen!2sph" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
     </section>
@@ -171,7 +165,6 @@
       <span class="arrow-up">↑</span>
     </a>
 
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script src="src/scripts/main.js"></script>
   </body>
 </html>

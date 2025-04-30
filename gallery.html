@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gallery - KEBS Print Crafts</title>
-    <meta name="description" content="View our portfolio of high-quality printing projects including tarpaulins, t-shirts, mugs, and more." />
+    <meta name="description" content="View our portfolio of print projects including tarpaulins, t-shirts, mugs, and more." />
     <meta name="author" content="KEBS Enterprise" />
     <link rel="stylesheet" href="src/styles/main.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap">
@@ -37,64 +37,87 @@
       </div>
     </header>
 
-    <section class="gallery section" id="gallery">
+    <section class="gallery-hero">
       <div class="container">
-        <div class="section-header">
-          <h2>Our Work</h2>
-          <p>Check out some of our recent projects</p>
+        <h2>Our Work</h2>
+        <p>Browse through our portfolio of recent printing projects</p>
+      </div>
+    </section>
+
+    <section class="gallery-content">
+      <div class="container">
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="tarpaulin">Tarpaulin</button>
+          <button class="filter-btn" data-filter="tshirt">T-shirts</button>
+          <button class="filter-btn" data-filter="mugs">Mugs</button>
+          <button class="filter-btn" data-filter="others">Others</button>
         </div>
+        
         <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="src/assets/images/tarpaulin-sample.jpg" alt="Tarpaulin printing sample">
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h3>Event Tarpaulin</h3>
-                <p>Custom design for local event</p>
+          <div class="gallery-item tarpaulin">
+            <div class="gallery-image">
+              <img src="src/images/gallery-1.jpg" alt="Tarpaulin printing project">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h4>Event Banner</h4>
+                  <p>Tarpaulin Printing</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="gallery-item">
-            <img src="src/assets/images/tshirt-sample.jpg" alt="T-shirt printing sample">
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h3>Corporate T-shirts</h3>
-                <p>Branded apparel for company team</p>
+          <div class="gallery-item tshirt">
+            <div class="gallery-image">
+              <img src="src/images/gallery-2.jpg" alt="Custom t-shirt printing">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h4>Company Uniform</h4>
+                  <p>T-shirt Printing</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="gallery-item">
-            <img src="src/assets/images/mug-sample.jpg" alt="Custom printed mug sample">
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h3>Promotional Mugs</h3>
-                <p>Custom design for business giveaways</p>
+          <div class="gallery-item mugs">
+            <div class="gallery-image">
+              <img src="src/images/gallery-3.jpg" alt="Custom printed mug">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h4>Promotional Mug</h4>
+                  <p>Custom Mug Printing</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="gallery-item">
-            <img src="src/assets/images/medal-sample.jpg" alt="Medal sample">
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h3>Sports Medals</h3>
-                <p>Custom medals for local tournament</p>
+          <div class="gallery-item tarpaulin">
+            <div class="gallery-image">
+              <img src="src/images/gallery-4.jpg" alt="Store signage tarpaulin">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h4>Store Signage</h4>
+                  <p>Tarpaulin Printing</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="gallery-item">
-            <img src="src/assets/images/lanyard-sample.jpg" alt="Lanyard sample">
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h3>Conference Lanyards</h3>
-                <p>Branded lanyards for business event</p>
+          <div class="gallery-item tshirt">
+            <div class="gallery-image">
+              <img src="src/images/gallery-5.jpg" alt="Event t-shirts">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h4>Event T-shirts</h4>
+                  <p>T-shirt Printing</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="gallery-item">
-            <img src="src/assets/images/ecobag-sample.jpg" alt="Ecobag printing sample">
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h3>Promotional Ecobags</h3>
-                <p>Sustainable branding solution</p>
+          <div class="gallery-item others">
+            <div class="gallery-image">
+              <img src="src/images/gallery-6.jpg" alt="Custom lanyards">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h4>Corporate Lanyards</h4>
+                  <p>Lanyard Printing</p>
+                </div>
               </div>
             </div>
           </div>
@@ -147,7 +170,35 @@
       <span class="arrow-up">↑</span>
     </a>
 
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script src="src/scripts/main.js"></script>
+    <script>
+      // Gallery filter functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Get filter value
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Show/hide gallery items based on filter
+            galleryItems.forEach(item => {
+              if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          });
+        });
+      });
+    </script>
   </body>
 </html>
