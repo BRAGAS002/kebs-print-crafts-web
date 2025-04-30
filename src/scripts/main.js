@@ -3,9 +3,18 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize all components
   initHeader();
-  initTestimonialSlider();
+  
+  // Initialize components based on current page
+  if (document.querySelector('.testimonial-card')) {
+    initTestimonialSlider();
+  }
+  
   initScrollTop();
-  initContactForm();
+  
+  if (document.querySelector('#contactForm')) {
+    initContactForm();
+  }
+  
   initMobileMenu();
 });
 
@@ -22,28 +31,17 @@ function initHeader() {
     }
   });
 
-  // Active navigation link highlighting
-  const sections = document.querySelectorAll('section');
+  // Active navigation link highlighting based on current page
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-links a');
   
-  window.addEventListener('scroll', function() {
-    let current = '';
-    
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      
-      if (window.scrollY >= (sectionTop - 200)) {
-        current = section.getAttribute('id');
-      }
-    });
-    
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href').substring(1) === current) {
-        link.classList.add('active');
-      }
-    });
+  navLinks.forEach(link => {
+    const linkHref = link.getAttribute('href');
+    if (linkHref === currentPage) {
+      link.classList.add('active');
+    } else if (currentPage === '' && linkHref === 'index.html') {
+      link.classList.add('active');
+    }
   });
 }
 
@@ -185,13 +183,4 @@ function initContactForm() {
       contactForm.reset();
     });
   }
-}
-
-// Create placeholder assets directories
-function createPlaceholderDirectories() {
-  // This function is just a reminder that we need these directories
-  // In a real project with a build system, these would be created automatically
-  // For this static site, we assume these directories exist:
-  // src/assets/images/
-  // src/assets/icons/
 }
