@@ -1,26 +1,468 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>kebs-print-crafts-web</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <meta property="og:title" content="kebs-print-crafts-web" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <title>KEBS Print Crafts - Professional Printing Services</title>
+    <meta name="description" content="Professional printing services for tarpaulins, t-shirts, mugs, dry seals and more. KEBS Enterprise - your trusted printing partner." />
+    <meta name="author" content="KEBS Enterprise" />
+    <link rel="stylesheet" href="src/styles/main.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap">
   </head>
 
   <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+    <header class="header" id="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <h1>KEBS <span>Print Crafts</span></h1>
+          </div>
+          <nav class="main-nav">
+            <button class="mobile-menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+              <li><a href="#home" class="active">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#contact" class="cta-btn">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <h2>Professional Printing Services</h2>
+          <h3>Transform Your Ideas into Reality</h3>
+          <p>Quality printing solutions for businesses and individuals</p>
+          <div class="hero-buttons">
+            <a href="#services" class="btn btn-primary">Our Services</a>
+            <a href="#contact" class="btn btn-outline">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Printing Services</h2>
+          <p>We offer a wide range of high-quality printing solutions</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card" data-service="tarpaulin">
+            <div class="service-icon">
+              <img src="src/assets/icons/tarpaulin.png" alt="Tarpaulin icon" class="service-img">
+            </div>
+            <h3>Tarpaulin</h3>
+            <p>High-quality tarpaulin printing for events, advertisements, and promotions.</p>
+          </div>
+          <div class="service-card" data-service="tshirt">
+            <div class="service-icon">
+              <img src="src/assets/icons/tshirt.png" alt="T-shirt icon" class="service-img">
+            </div>
+            <h3>T-shirt Printing</h3>
+            <p>Custom designs for personal use, events, business branding, and more.</p>
+          </div>
+          <div class="service-card" data-service="sintra">
+            <div class="service-icon">
+              <img src="src/assets/icons/sintra.png" alt="Sintra Board icon" class="service-img">
+            </div>
+            <h3>Sintra Board</h3>
+            <p>Durable signage and displays for indoor and outdoor applications.</p>
+          </div>
+          <div class="service-card" data-service="mugs">
+            <div class="service-icon">
+              <img src="src/assets/icons/mug.png" alt="Mug icon" class="service-img">
+            </div>
+            <h3>Mugs</h3>
+            <p>Custom mug printing for gifts, souvenirs, and corporate giveaways.</p>
+          </div>
+          <div class="service-card" data-service="dryseal">
+            <div class="service-icon">
+              <img src="src/assets/icons/dryseal.png" alt="Dry Seal icon" class="service-img">
+            </div>
+            <h3>Dry Seal</h3>
+            <p>Professional embossed seals for documents and certificates.</p>
+          </div>
+          <div class="service-card" data-service="buttonpin">
+            <div class="service-icon">
+              <img src="src/assets/icons/button.png" alt="Button Pin icon" class="service-img">
+            </div>
+            <h3>Button Pin</h3>
+            <p>Customized pins for events, campaigns, and merchandise.</p>
+          </div>
+          <div class="service-card" data-service="lanyard">
+            <div class="service-icon">
+              <img src="src/assets/icons/lanyard.png" alt="Lanyard icon" class="service-img">
+            </div>
+            <h3>Lanyard/Lace</h3>
+            <p>Custom printed lanyards for ID holders, events, and conferences.</p>
+          </div>
+          <div class="service-card" data-service="ecobag">
+            <div class="service-icon">
+              <img src="src/assets/icons/ecobag.png" alt="Ecobag icon" class="service-img">
+            </div>
+            <h3>Ecobag/Totebag</h3>
+            <p>Eco-friendly bag printing for sustainable branding solutions.</p>
+          </div>
+          <div class="service-card" data-service="plaque">
+            <div class="service-icon">
+              <img src="src/assets/icons/plaque.png" alt="Plaque icon" class="service-img">
+            </div>
+            <h3>Plaque</h3>
+            <p>Recognition plaques for awards, commemorations, and achievements.</p>
+          </div>
+          <div class="service-card" data-service="medal-kagawaran">
+            <div class="service-icon">
+              <img src="src/assets/icons/medal.png" alt="Medal icon" class="service-img">
+            </div>
+            <h3>Medal (KAGAWARAN)</h3>
+            <p>Official medals for government and institutional recognition.</p>
+          </div>
+          <div class="service-card" data-service="personalized-medal">
+            <div class="service-icon">
+              <img src="src/assets/icons/personalized-medal.png" alt="Personalized Medal icon" class="service-img">
+            </div>
+            <h3>Personalized Medal</h3>
+            <p>Custom medals for sports events, competitions, and special occasions.</p>
+          </div>
+          <div class="service-card" data-service="collar-pin">
+            <div class="service-icon">
+              <img src="src/assets/icons/collar-pin.png" alt="Collar Pin icon" class="service-img">
+            </div>
+            <h3>Collar Pin</h3>
+            <p>Elegant pins for formal and corporate attire.</p>
+          </div>
+          <div class="service-card" data-service="rubber-stamp">
+            <div class="service-icon">
+              <img src="src/assets/icons/stamp.png" alt="Rubber Stamp icon" class="service-img">
+            </div>
+            <h3>Rubber Stamp</h3>
+            <p>Custom stamps for business documentation and branding.</p>
+          </div>
+          <div class="service-card" data-service="certificate-holder">
+            <div class="service-icon">
+              <img src="src/assets/icons/certificate.png" alt="Certificate Holder icon" class="service-img">
+            </div>
+            <h3>Certificate Holder</h3>
+            <p>Professional holders for diplomas, awards, and certificates.</p>
+          </div>
+          <div class="service-card" data-service="fan">
+            <div class="service-icon">
+              <img src="src/assets/icons/fan.png" alt="Fan icon" class="service-img">
+            </div>
+            <h3>Foldable Fan</h3>
+            <p>Custom printed fans for events, promotions, and giveaways.</p>
+          </div>
+          <div class="service-card" data-service="umbrella">
+            <div class="service-icon">
+              <img src="src/assets/icons/umbrella.png" alt="Umbrella icon" class="service-img">
+            </div>
+            <h3>Umbrella</h3>
+            <p>Branded umbrellas for corporate gifts and promotional items.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <div class="section-header">
+              <h2>About KEBS Enterprise</h2>
+              <p>Your trusted partner for all printing needs</p>
+            </div>
+            <p class="about-description">
+              KEBS Enterprise is a professional printing company committed to delivering high-quality printing services to businesses and individuals. With years of experience in the industry, we have built a reputation for excellence, reliability, and customer satisfaction.
+            </p>
+            <p class="about-description">
+              Our team of skilled professionals uses advanced printing technology to ensure that each project meets the highest standards. We pride ourselves on attention to detail, quick turnaround times, and competitive pricing.
+            </p>
+            <div class="about-features">
+              <div class="feature">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">Quality Materials</div>
+              </div>
+              <div class="feature">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">Fast Turnaround</div>
+              </div>
+              <div class="feature">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">Competitive Pricing</div>
+              </div>
+              <div class="feature">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">Custom Designs</div>
+              </div>
+            </div>
+          </div>
+          <div class="about-image">
+            <img src="src/assets/images/print-shop.jpg" alt="KEBS Enterprise Printing Facility">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery section" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Work</h2>
+          <p>Check out some of our recent projects</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="src/assets/images/tarpaulin-sample.jpg" alt="Tarpaulin printing sample">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Event Tarpaulin</h3>
+                <p>Custom design for local event</p>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="src/assets/images/tshirt-sample.jpg" alt="T-shirt printing sample">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Corporate T-shirts</h3>
+                <p>Branded apparel for company team</p>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="src/assets/images/mug-sample.jpg" alt="Custom printed mug sample">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Promotional Mugs</h3>
+                <p>Custom design for business giveaways</p>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="src/assets/images/medal-sample.jpg" alt="Medal sample">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Sports Medals</h3>
+                <p>Custom medals for local tournament</p>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="src/assets/images/lanyard-sample.jpg" alt="Lanyard sample">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Conference Lanyards</h3>
+                <p>Branded lanyards for business event</p>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="src/assets/images/ecobag-sample.jpg" alt="Ecobag printing sample">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Promotional Ecobags</h3>
+                <p>Sustainable branding solution</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials section" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2>Customer Testimonials</h2>
+          <p>What our clients say about our services</p>
+        </div>
+        <div class="testimonial-slider">
+          <div class="testimonial-container" id="testimonialContainer">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>"KEBS Enterprise delivered exceptional quality tarpaulins for our company event. The colors were vibrant, and the printing was crystal clear. Their team was professional and completed the project ahead of schedule."</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <h4>Maria Santos</h4>
+                  <p>Event Coordinator, ABC Company</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>"We ordered customized t-shirts for our school's sports team, and the results exceeded our expectations. The print quality was outstanding, and the shirts arrived on time. Highly recommended!"</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <h4>John Reyes</h4>
+                  <p>Athletic Director, XYZ School</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>"The medal and plaque designs created by KEBS Enterprise for our recognition ceremony were absolutely beautiful. The attention to detail and craftsmanship were impressive. Will definitely work with them again."</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <h4>Anna Cruz</h4>
+                  <p>HR Manager, LMN Corporation</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-dots" id="testimonialDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Contact Us</h2>
+          <p>Get in touch for inquiries and quotes</p>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <img src="src/assets/icons/location.png" alt="Address">
+              </div>
+              <div class="contact-text">
+                <h4>Address</h4>
+                <p>123 Print Avenue, Makati City, Philippines</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <img src="src/assets/icons/email.png" alt="Email">
+              </div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <p>info@kebsenterprises.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <img src="src/assets/icons/phone.png" alt="Phone">
+              </div>
+              <div class="contact-text">
+                <h4>Phone</h4>
+                <p>+63 2 1234 5678</p>
+              </div>
+            </div>
+            <div class="business-hours">
+              <h4>Business Hours</h4>
+              <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+              <p>Saturday: 9:00 AM - 3:00 PM</p>
+              <p>Sunday: Closed</p>
+            </div>
+          </div>
+          <div class="contact-form-container">
+            <form id="contactForm" class="contact-form">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+              <div class="form-group">
+                <label for="service">Service Needed</label>
+                <select id="service" name="service">
+                  <option value="">Select a service</option>
+                  <option value="tarpaulin">Tarpaulin</option>
+                  <option value="tshirt">T-shirt Printing</option>
+                  <option value="sintra">Sintra Board</option>
+                  <option value="mugs">Mugs</option>
+                  <option value="dryseal">Dry Seal</option>
+                  <option value="buttonpin">Button Pin</option>
+                  <option value="lanyard">Lanyard/Lace</option>
+                  <option value="ecobag">Ecobag/Totebag</option>
+                  <option value="plaque">Plaque</option>
+                  <option value="medal">Medal (KAGAWARAN)</option>
+                  <option value="personalized-medal">Personalized Medal</option>
+                  <option value="collar-pin">Collar Pin</option>
+                  <option value="rubber-stamp">Rubber Stamp</option>
+                  <option value="certificate-holder">Certificate Holder</option>
+                  <option value="foldable-fan">Foldable Fan</option>
+                  <option value="umbrella">Umbrella</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h3>KEBS <span>Print Crafts</span></h3>
+            <p>Quality printing solutions for all your needs</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-services">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#services">Tarpaulin Printing</a></li>
+              <li><a href="#services">T-shirt Printing</a></li>
+              <li><a href="#services">Sintra Board</a></li>
+              <li><a href="#services">Custom Mugs</a></li>
+              <li><a href="#services">And More...</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><strong>Address:</strong> 123 Print Avenue, Makati City</p>
+            <p><strong>Email:</strong> info@kebsenterprises.com</p>
+            <p><strong>Phone:</strong> +63 2 1234 5678</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 KEBS Enterprise. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#home" class="scroll-top" id="scrollTop">
+      <span class="arrow-up">↑</span>
+    </a>
+
+    <script src="src/scripts/main.js"></script>
   </body>
 </html>
