@@ -1,4 +1,3 @@
-
 /* Main CSS Styles for KEBS Enterprise Website */
 
 /* ======== Base Styles ======== */
@@ -14,6 +13,19 @@
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
   --border-radius: 8px;
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+  --primary-color: #A78BFA;
+  --secondary-color: #8B5CF6;
+  --accent-color: #FB923C;
+  --dark-color: #F6F6F7;
+  --light-color: #1A1F2C;
+  --white: #2D3748;
+  --gray: #A0AEC0;
+  --light-gray: #2D3748;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -891,6 +903,39 @@ img {
   min-height: 150px;
 }
 
+.form-group input[type="file"] {
+  padding: 10px;
+  border: 2px dashed var(--light-gray);
+  border-radius: var(--border-radius);
+  width: 100%;
+  cursor: pointer;
+  background-color: var(--light-color);
+}
+
+.form-group input[type="file"]:hover {
+  border-color: var(--primary-color);
+}
+
+.file-info {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.submit-group {
+  margin-top: 30px;
+}
+
+[data-theme="dark"] .form-group input[type="file"] {
+  background-color: var(--white);
+  border-color: var(--gray);
+}
+
+[data-theme="dark"] .form-group input[type="file"]:hover {
+  border-color: var(--primary-color);
+}
+
 .map-section {
   padding: 60px 0;
 }
@@ -1106,4 +1151,198 @@ img {
   .services-preview {
     grid-template-columns: 1fr;
   }
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+[data-theme="dark"] .theme-icon {
+  content: "☀️";
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] body {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
+[data-theme="dark"] .header {
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+}
+
+[data-theme="dark"] .logo h1 span {
+  color: var(--dark-color);
+}
+
+[data-theme="dark"] .nav-links a {
+  color: var(--dark-color);
+}
+
+[data-theme="dark"] .hero {
+  background-color: var(--light-color);
+  background-image: linear-gradient(to right, rgba(26, 31, 44, 0.9), rgba(26, 31, 44, 0.8)), url('../images/hero-bg.jpg');
+}
+
+[data-theme="dark"] .footer {
+  background-color: var(--white);
+  color: var(--dark-color);
+}
+
+[data-theme="dark"] .footer h4 {
+  color: var(--dark-color);
+}
+
+[data-theme="dark"] .footer-links ul li a {
+  color: var(--dark-color);
+}
+
+[data-theme="dark"] .footer-links ul li a:hover {
+  color: var(--primary-color);
+}
+
+/* File Upload Styles */
+.upload-container {
+  margin-bottom: 20px;
+}
+
+.upload-area {
+  position: relative;
+  border: 2px dashed var(--light-gray);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  text-align: center;
+  background-color: var(--light-color);
+  transition: var(--transition);
+  cursor: pointer;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-area:hover,
+.upload-area.dragover {
+  border-color: var(--primary-color);
+  background-color: rgba(139, 92, 246, 0.05);
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.upload-default p {
+  margin: 5px 0;
+  color: var(--gray);
+}
+
+.browse-text {
+  color: var(--primary-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-list {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.file-item-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.file-item-name {
+  flex-grow: 1;
+  margin-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-item-size {
+  color: var(--gray);
+  font-size: 0.85rem;
+  margin-right: 15px;
+}
+
+.file-item-remove {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 1.1rem;
+  opacity: 0.7;
+  transition: var(--transition);
+}
+
+.file-item-remove:hover {
+  opacity: 1;
+}
+
+.upload-progress {
+  width: 100%;
+  height: 4px;
+  background-color: var(--light-gray);
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+.upload-progress-bar {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Dark mode styles for upload area */
+[data-theme="dark"] .upload-area {
+  background-color: var(--white);
+  border-color: var(--gray);
+}
+
+[data-theme="dark"] .upload-area:hover,
+[data-theme="dark"] .upload-area.dragover {
+  border-color: var(--primary-color);
+  background-color: rgba(139, 92, 246, 0.1);
+}
+
+[data-theme="dark"] .file-item {
+  background-color: var(--light-color);
 }

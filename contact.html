@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,12 +23,14 @@
               <span></span>
               <span></span>
             </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+              <span class="theme-icon">🌙</span>
+            </button>
             <ul class="nav-links" id="navLinks">
               <li><a href="index.html">Home</a></li>
               <li><a href="services.html">Services</a></li>
               <li><a href="about.html">About</a></li>
               <li><a href="gallery.html">Gallery</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>
               <li><a href="contact.html" class="active cta-btn">Contact Us</a></li>
             </ul>
           </nav>
@@ -51,17 +52,15 @@
             <h3>Contact Information</h3>
             <div class="info-item">
               <h4>Address</h4>
-              <p>123 Print Avenue, Makati City, Philippines</p>
+              <p>#36 A. Bonifacio Street, Baguio City, Philippines</p>
             </div>
             <div class="info-item">
               <h4>Phone</h4>
-              <p>+63 2 1234 5678</p>
-              <p>+63 9XX XXX XXXX</p>
+              <p>0999 888 3955</p>
             </div>
             <div class="info-item">
               <h4>Email</h4>
-              <p>info@kebsenterprises.com</p>
-              <p>sales@kebsenterprises.com</p>
+              <p>kebs_enterprise@yahoo.com</p>
             </div>
             <div class="info-item">
               <h4>Business Hours</h4>
@@ -72,7 +71,7 @@
           </div>
           <div class="contact-form-container">
             <h3>Send Us a Message</h3>
-            <form id="contactForm" class="contact-form">
+            <form id="contactForm" class="contact-form" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="name">Your Name*</label>
                 <input type="text" id="name" name="name" required>
@@ -104,7 +103,21 @@
                 <label for="message">Your Message*</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Send Message</button>
+              <div class="form-group upload-container">
+                <label for="attachments">Attach Files</label>
+                <div class="upload-area" id="uploadArea">
+                  <div class="upload-default">
+                    <i class="upload-icon">📎</i>
+                    <p>Drag & drop files here or <span class="browse-text">browse</span></p>
+                    <p class="file-info">Maximum file size: 10MB (JPG, PNG, PDF, DOC)</p>
+                  </div>
+                  <div class="file-list" id="fileList"></div>
+                  <input type="file" id="attachments" name="attachments[]" multiple accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" class="file-input">
+                </div>
+              </div>
+              <div class="form-group submit-group">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
             </form>
           </div>
         </div>
@@ -115,7 +128,7 @@
       <div class="container">
         <h3>Find Us</h3>
         <div class="map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.802548850809!2d121.02730931540228!3d14.556950589829351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90264a0ed01%3A0x2b066ed57830aedb!2sMakati%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1619514246532!5m2!1sen!2sph" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117.51923526226922!2d120.59649196193466!3d16.418292121821974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3391a16af46bf715%3A0x17cbb8cc036e4d4e!2sKEBS%20Enterprise!5e0!3m2!1sen!2sph!4v1709697774961!5m2!1sen!2sph" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </section>
@@ -150,9 +163,9 @@
           </div>
           <div class="footer-contact">
             <h4>Contact Us</h4>
-            <p><strong>Address:</strong> 123 Print Avenue, Makati City</p>
-            <p><strong>Email:</strong> info@kebsenterprises.com</p>
-            <p><strong>Phone:</strong> +63 2 1234 5678</p>
+            <p><strong>Address:</strong> #36 A. Bonifacio Street, Baguio City, Philippines</p>
+            <p><strong>Phone:</strong> 0999 888 3955</p>
+            <p><strong>Email:</strong> kebs_enterprise@yahoo.com</p>
           </div>
         </div>
         <div class="footer-bottom">
@@ -165,6 +178,6 @@
       <span class="arrow-up">↑</span>
     </a>
 
-    <script src="src/scripts/main.js"></script>
+    <script src="src/scripts/main.js" type="module"></script>
   </body>
 </html>

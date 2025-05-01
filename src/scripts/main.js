@@ -1,4 +1,3 @@
-
 // Wait for DOM to load before executing scripts
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize all components
@@ -21,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   initMobileMenu();
+  
+  initFileUpload();
 });
 
 // Header scroll behavior
@@ -229,59 +230,116 @@ function initScrollTop() {
 }
 
 // Contact form functionality
-function initContactForm() {
+async function initContactForm() {
   const contactForm = document.getElementById('contactForm');
   
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    // Load saved form data if it exists
+    const { loadFormData, saveFormData, submitFormToSupabase, uploadFile } = await import('../../config/supabase.js');
+    const savedData = loadFormData();
+    
+    if (savedData) {
+      Object.keys(savedData).forEach(key => {
+        const input = contactForm.querySelector(`[name="${key}"]`);
+        if (input) {
+          input.value = savedData[key];
+        }
+      });
+    }
+    
+    // Save form data on input change
+    contactForm.addEventListener('input', function(e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+        const formData = new FormData(this);
+        saveFormData(formData);
+      }
+    });
+
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Get form values
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone') ? document.getElementById('phone').value.trim() : '';
-      const service = document.getElementById('service') ? document.getElementById('service').value : '';
-      const message = document.getElementById('message').value.trim();
-      
-      // Validate form
-      let isValid = true;
-      let errorMessage = '';
-      
-      if (!name) {
-        isValid = false;
-        errorMessage += 'Name is required.\n';
-        highlightField('name');
-      }
-      
-      if (!email) {
-        isValid = false;
-        errorMessage += 'Email is required.\n';
-        highlightField('email');
-      } else if (!isValidEmail(email)) {
-        isValid = false;
-        errorMessage += 'Please enter a valid email address.\n';
-        highlightField('email');
-      }
-      
-      if (!message) {
-        isValid = false;
-        errorMessage += 'Message is required.\n';
-        highlightField('message');
-      }
-      
-      // If there are validation errors, show them
-      if (!isValid) {
-        alert('Please correct the following errors:\n' + errorMessage);
+      if (!validateForm()) {
         return;
       }
       
-      // If form is valid, show success message (in a real app, you'd send the data to a server)
-      showSuccessMessage(name);
+      const submitButton = this.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
       
-      // Reset form
-      contactForm.reset();
+      try {
+        const formData = new FormData(this);
+        
+        // Handle file uploads first
+        const fileInput = document.getElementById('attachments');
+        const files = fileInput.files;
+        const fileUrls = [];
+        
+        for (const file of files) {
+          const result = await uploadFile(file);
+          if (result.success) {
+            fileUrls.push(result);
+          } else {
+            throw new Error(`Failed to upload file: ${file.name}`);
+          }
+        }
+        
+        // Add file URLs to form data
+        formData.append('attachments', JSON.stringify(fileUrls));
+        
+        // Submit form data to Supabase
+        const result = await submitFormToSupabase(formData);
+        
+        if (result.success) {
+          showSuccessMessage(formData.get('name'));
+          contactForm.reset();
+          document.getElementById('fileList').innerHTML = '';
+        } else {
+          throw new Error(result.error);
+        }
+      } catch (error) {
+        alert(error.message || 'Sorry, there was an error sending your message. Please try again later.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+      }
     });
   }
+}
+
+function validateForm() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  let isValid = true;
+  let errorMessage = '';
+  
+  if (!name) {
+    isValid = false;
+    errorMessage += 'Name is required.\n';
+    highlightField('name');
+  }
+  
+  if (!email) {
+    isValid = false;
+    errorMessage += 'Email is required.\n';
+    highlightField('email');
+  } else if (!isValidEmail(email)) {
+    isValid = false;
+    errorMessage += 'Please enter a valid email address.\n';
+    highlightField('email');
+  }
+  
+  if (!message) {
+    isValid = false;
+    errorMessage += 'Message is required.\n';
+    highlightField('message');
+  }
+  
+  if (!isValid) {
+    alert('Please correct the following errors:\n' + errorMessage);
+  }
+  
+  return isValid;
 }
 
 // Helper functions for form validation
@@ -330,4 +388,150 @@ function showSuccessMessage(name) {
       successMessage.remove();
     }, 500);
   }, 5000);
+}
+
+// Theme switching functionality
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('.theme-icon');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Load saved theme from localStorage or use system preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+} else if (prefersDarkScheme.matches) {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  themeIcon.textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+});
+
+function initFileUpload() {
+  const uploadArea = document.getElementById('uploadArea');
+  const fileInput = document.getElementById('attachments');
+  const fileList = document.getElementById('fileList');
+  
+  if (!uploadArea || !fileInput || !fileList) return;
+
+  // Handle drag and drop events
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    uploadArea.addEventListener(eventName, preventDefaults, false);
+  });
+
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  ['dragenter', 'dragover'].forEach(eventName => {
+    uploadArea.addEventListener(eventName, highlight, false);
+  });
+
+  ['dragleave', 'drop'].forEach(eventName => {
+    uploadArea.addEventListener(eventName, unhighlight, false);
+  });
+
+  function highlight() {
+    uploadArea.classList.add('dragover');
+  }
+
+  function unhighlight() {
+    uploadArea.classList.remove('dragover');
+  }
+
+  // Handle dropped files
+  uploadArea.addEventListener('drop', handleDrop, false);
+
+  function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    handleFiles(files);
+  }
+
+  // Handle file input change
+  fileInput.addEventListener('change', function() {
+    handleFiles(this.files);
+  });
+
+  function handleFiles(files) {
+    const validFiles = validateFiles(Array.from(files));
+    if (validFiles.length > 0) {
+      updateFileList(validFiles);
+    }
+  }
+
+  function validateFiles(files) {
+    const maxFileSize = 10 * 1024 * 1024; // 10MB
+    const validTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    
+    return files.filter(file => {
+      if (!validTypes.includes(file.type)) {
+        alert(`File type not allowed: ${file.name}`);
+        return false;
+      }
+      if (file.size > maxFileSize) {
+        alert(`File too large: ${file.name}`);
+        return false;
+      }
+      return true;
+    });
+  }
+
+  function updateFileList(files) {
+    fileList.innerHTML = '';
+    files.forEach(file => {
+      const fileItem = createFileItem(file);
+      fileList.appendChild(fileItem);
+    });
+  }
+
+  function createFileItem(file) {
+    const fileItem = document.createElement('div');
+    fileItem.className = 'file-item';
+    
+    const icon = getFileIcon(file.type);
+    const size = formatFileSize(file.size);
+    
+    fileItem.innerHTML = `
+      <span class="file-item-icon">${icon}</span>
+      <span class="file-item-name">${file.name}</span>
+      <span class="file-item-size">${size}</span>
+      <button type="button" class="file-item-remove">×</button>
+    `;
+    
+    fileItem.querySelector('.file-item-remove').addEventListener('click', () => {
+      fileItem.remove();
+      updateFileInput();
+    });
+    
+    return fileItem;
+  }
+
+  function getFileIcon(type) {
+    if (type.includes('image')) return '🖼️';
+    if (type.includes('pdf')) return '📄';
+    if (type.includes('word')) return '📝';
+    return '📎';
+  }
+
+  function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  function updateFileInput() {
+    // This function would be called if we need to sync the file list with the input
+    // For now, we'll let the FormData handle the files directly
+  }
 }
